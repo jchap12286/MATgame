@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+    <style>
+
+    </style>
+<head>
+    <script async="true" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=AM_CHTML"> </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAT 101 Game</title>
+</head>
+<body>
+    <div>
+        <input type="file" id="restoreFile" accept=".txt" onchange="
+                var reader = new FileReader();
+                reader.addEventListener('load', function(){
+                    myString = this.result;
+                })
+                reader.readAsText(document.getElementById('restoreFile').files[0]);
+                ">
+        <button id="restoreButton">Restore</button>
+        <div id="result"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="test.js" charset="utf-8" type="text/javascript"></script></p>
+    <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"></script>
+</body>
+</html>
