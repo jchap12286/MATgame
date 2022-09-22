@@ -466,18 +466,18 @@ function escapeKey(z) {
 }
 
 function saveGame() {
-  localStorage['gameData'] = btoa(JSON.stringify(gameData));
-  localStorage['costT'] = btoa(JSON.stringify(costT));
-  localStorage['kpsvector'] = btoa(JSON.stringify(kpsvector));
-  localStorage['numberCorrect'] = btoa(JSON.stringify(numberCorrect));
-  localStorage['numberCorrectCommas'] = btoa(JSON.stringify(numberCorrectCommas));
-  localStorage['numberCorrectUnit'] = btoa(JSON.stringify(numberCorrectUnit));
-  localStorage['kpsFromT'] = btoa(JSON.stringify(kpsFromT));
-  localStorage['levelT'] = btoa(JSON.stringify(levelT));
-  localStorage['purchasedMusicUpgrade'] = btoa(JSON.stringify(purchasedMusicUpgrade));
-  localStorage['upgradePurchased'] = btoa(JSON.stringify(upgradePurchased));
-  localStorage['gotGreek'] = btoa(JSON.stringify(gotGreek));
-  localStorage['gotGreekTotal'] = btoa(JSON.stringify(gotGreekTotal));
+  localStorage['gameData'] = JSON.stringify(gameData);
+  localStorage['costT'] = JSON.stringify(costT);
+  localStorage['kpsvector'] = JSON.stringify(kpsvector);
+  localStorage['numberCorrect'] = JSON.stringify(numberCorrect);
+  localStorage['numberCorrectCommas'] = JSON.stringify(numberCorrectCommas);
+  localStorage['numberCorrectUnit'] = JSON.stringify(numberCorrectUnit);
+  localStorage['kpsFromT'] = JSON.stringify(kpsFromT);
+  localStorage['levelT'] = JSON.stringify(levelT);
+  localStorage['purchasedMusicUpgrade'] = JSON.stringify(purchasedMusicUpgrade);
+  localStorage['upgradePurchased'] = JSON.stringify(upgradePurchased);
+  localStorage['gotGreek'] = JSON.stringify(gotGreek);
+  localStorage['gotGreekTotal'] = JSON.stringify(gotGreekTotal);
 }
 
 function backup() {
@@ -513,18 +513,18 @@ function backup() {
   }
   var blob = new Blob([
     "mat101incrementalgamebackupfile" +
-    btoa(JSON.stringify(gameData)) + "_" +
-    btoa(JSON.stringify(costT)) + "_" +
-    btoa(JSON.stringify(kpsvector)) + "_" +
-    btoa(JSON.stringify(numberCorrect)) + "_" +
-    btoa(JSON.stringify(numberCorrectCommas)) + "_" +
-    btoa(JSON.stringify(numberCorrectUnit)) + "_" +
-    btoa(JSON.stringify(kpsFromT)) + "_" +
-    btoa(JSON.stringify(levelT)) + "_" +
-    btoa(JSON.stringify(purchasedMusicUpgrade)) + "_" +
-    btoa(JSON.stringify(upgradePurchased)) + "_" +
-    btoa(JSON.stringify(gotGreek)) + "_" +
-    btoa(JSON.stringify(gotGreekTotal))
+    JSON.stringify(gameData) + "_" +
+    JSON.stringify(costT) + "_" +
+    JSON.stringify(kpsvector) + "_" +
+    JSON.stringify(numberCorrect) + "_" +
+    JSON.stringify(numberCorrectCommas) + "_" +
+    JSON.stringify(numberCorrectUnit) + "_" +
+    JSON.stringify(kpsFromT) + "_" +
+    JSON.stringify(levelT) + "_" +
+    JSON.stringify(purchasedMusicUpgrade) + "_" +
+    JSON.stringify(upgradePurchased) + "_" +
+    JSON.stringify(gotGreek) + "_" +
+    JSON.stringify(gotGreekTotal)
     ],{type: "text/plain;charset=utf-8"});
   saveAs(blob,"mat101backup" + dateYear + dateMonth + dateDay + "_" + dateHour + dateMinute + dateSecond + dateMS + ".txt");
     
@@ -2971,18 +2971,18 @@ function shuffleArray(array) {
 function initialize() {
   initializeTime = Date.now()
   if (localStorage['gameData'] != "" && localStorage['gameData'] != "undefined") {
-    gameData = JSON.parse(atob(localStorage['gameData']));
-    costT = JSON.parse(atob(localStorage['costT']));
-    kpsvector = JSON.parse(atob(localStorage['kpsvector']));
-    numberCorrect = JSON.parse(atob(localStorage['numberCorrect']));
-    numberCorrectCommas = JSON.parse(atob(localStorage['numberCorrectCommas']));
-    numberCorrectUnit = JSON.parse(atob(localStorage['numberCorrectUnit']));
-    kpsFromT = JSON.parse(atob(localStorage['kpsFromT']));
-    levelT = JSON.parse(atob(localStorage['levelT']));
-    purchasedMusicUpgrade = JSON.parse(atob(localStorage['purchasedMusicUpgrade']));
-    upgradePurchased = JSON.parse(atob(localStorage['upgradePurchased']));
-    gotGreek = JSON.parse(atob(localStorage['gotGreek']));
-    gotGreekTotal = JSON.parse(atob(localStorage['gotGreekTotal']));
+    gameData = JSON.parse(localStorage['gameData']);
+    costT = JSON.parse(localStorage['costT']);
+    kpsvector = JSON.parse(localStorage['kpsvector']);
+    numberCorrect = JSON.parse(localStorage['numberCorrect']);
+    numberCorrectCommas = JSON.parse(localStorage['numberCorrectCommas']);
+    numberCorrectUnit = JSON.parse(localStorage['numberCorrectUnit']);
+    kpsFromT = JSON.parse(localStorage['kpsFromT']);
+    levelT = JSON.parse(localStorage['levelT']);
+    purchasedMusicUpgrade = JSON.parse(localStorage['purchasedMusicUpgrade']);
+    upgradePurchased = JSON.parse(localStorage['upgradePurchased']);
+    gotGreek = JSON.parse(localStorage['gotGreek']);
+    gotGreekTotal = JSON.parse(localStorage['gotGreekTotal']);
   }
   if (gameData.kps[0] == 0) {
     document.getElementById("rubyHeader").style.visibility = "hidden"
