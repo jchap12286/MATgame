@@ -9,46 +9,56 @@
                 'header header2 main main main'
                 'menu menu main main main'
                 'menu menu main main main'
-                'menu menu main main main'
                 'menu menu footer footer footer';
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            grid-template-rows: 0fr 1fr 1fr 1fr 1fr 1fr;
-            gap: 10px;
-            padding: 5px;
+            grid-template-columns: 1.09fr 1.09fr 0.94fr 0.94fr 0.94fr;
+            grid-template-rows: 1vmin 16vh 31vh 31vh 21vh;
+
         }
         .item0 {
             grid-area: top;
             position: absolute;
             top: 0%;
             width: 98%;
+            height: 2.8vmin;
+            line-height: 2.8vmin
         }
         .item1 {
             grid-area: header;
-            margin-top: 9px
+            margin-top: 0.47vw;
+            position: relative;
         }
         .item2 {
             grid-area: header2;
-            margin-top: 10px
+            margin-top: 0.52vw;
+            position: relative;
         }
         .item3 {
             grid-area: menu;
-            height: 530px;
-            width: 580px;
+            height: 85%;
+            width: 100%;
+            position: relative;
         }
         .item4 {
             grid-area: main;
-            position: absolute;
-            left: 43%;
-            top: 0%;
+            position: relative;
+            display: block;
+            background: url('whiteboard.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+            padding-top: 2.6%;
+            padding-left: 2.6%;
+            padding-right: 2.6%;
+            padding-bottom: 2.6%;
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-bottom: 0%;
         }
         .item5 {
             grid-area: footer;
             overflow-y: hidden;
-            height: 135px;
-            width: 55%;
-            position: absolute;
-            left: 43%;
-            top: 79%;
+            position: relative;
+            bottom: 5%;
         }
         body {
             background: url(mathbackground.jpg);
@@ -67,10 +77,11 @@
         }
         .buyButton {
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 0.31vw;
             border: 1px solid blue;
             background-color: rgb(239, 239, 239);
-            box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2)
+            box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2);
+            font-size: 0.9vw
         }
         .buyButton:hover {
             background-color: rgb(223, 223, 223);
@@ -80,87 +91,86 @@
             background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
+            height: 4.17vw;
+            width: 4.69vw;
             cursor: pointer;
-            margin: 5px;
+            margin: 0.26vw;
         }
         .iconmusicsilver {
             background: url("silverMusic.png");
             background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
+            height: 4.17vw;
+            width: 4.69vw;
             cursor: pointer;
-            margin: 5px;
+            margin: 0.26vw;
         }
         .iconmusicgold {
             background: url("goldMusic.png");
             background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
+            height: 4.17vw;
+            width: 4.69vw;
             cursor: pointer;
-            margin: 5px;
+            margin: 0.26vw;
         }
         .iconmusicplatinum {
             background: url("platinumMusic.png");
             background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
+            height: 4.17vw;
+            width: 4.69vw;
             cursor: pointer;
-            margin: 5px;
+            margin: 0.26vw;
         }
         .iconmusicdiamond {
             background: url("diamondMusic.png");
             background-size: 70%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
+            height: 4.17vw;
+            width: 4.69vw;
             cursor: pointer;
-            margin: 5px;
+            margin: 0.26vw;
         }
         .iconsilver {
             background: url("iconsilver.png");
-            background-size: 70%;
+            background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
-            cursor: pointer;
-            margin: 5px;
+            height: 4.17vw;
+            width: 4.69vw;
+            margin: 0.26vw;
         }
         .icongold {
             background: url("icongold.png");
-            background-size: 70%;
+            background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
-            cursor: pointer;
+            height: 4.17vw;
+            width: 4.69vw;
+            margin: 0.26vw;
         }
         .iconplatinum {
             background: url("iconplatinum.png");
-            background-size: 70%;
+            background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
-            cursor: pointer;
+            height: 4.17vw;
+            width: 4.69vw;
+            margin: 0.26vw;
         }
         .icondiamond {
             background: url("icondiamond.png");
-            background-size: 70%;
+            background-size: 60%;
             background-repeat: no-repeat;
             background-position: center;
-            height: 80px;
-            width: 90px;
-            cursor: pointer;
+            height: 4.17vw;
+            width: 4.69vw;
+            margin: 0.26vw;
         }
         .KPSProgress {
             accent-color: rgba(255, 0, 0, 0.788)
@@ -172,8 +182,8 @@
             visibility: hidden;
             position: relative;
             cursor: pointer;
-            padding: 15px 30px;
-            margin: 10px;
+            padding: 0.78vw 1.56vw;
+            margin: 0.52vw;
             background: rgb(0, 7, 135);
             color: #fff;
             text-decoration: none;
@@ -181,7 +191,7 @@
             border: 1px solid #000;
             transition: 0.5s;
             overflow: hidden;
-            border-radius: 15px;
+            border-radius: 0.78vw;
             box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2)
         }
         .shinyButton:hover {
@@ -203,14 +213,14 @@
         .shinyButton2 {
             position: relative;
             cursor: pointer;
-            padding: 1px 6px;
+            padding: 0.05vw 0.31vw;
             background: rgb(255, 255, 255);
             color: black;
             text-decoration: none;
             border: 1px solid #000;
             transition: 0.5s;
             overflow: hidden;
-            border-radius: 6px;
+            border-radius: 0.31vw;
             box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.2)
         }
         .shinyButton2:hover {
@@ -235,17 +245,20 @@
             background-color: rgb(16, 0, 156);
             overflow: hidden;
             border: 1px solid #000;
-            border-radius: 10px;
+            border-radius: 0.52vw;
             z-index: 500;
+            line-height: 1vh
         }
         /* Style the links inside the navigation bar */
         .topnav div {
             color: #f2f2f2;
             text-align: center;
-            padding: 0px 8px;
+            padding: 0vw 0.42vw;
             border: 1px solid black;
             text-decoration: none;
-            font-size: 16px;
+        }
+        .topnav div button {
+            font-size: 0.83vw;
         }
         /* Change the color of links on hover */
         .topnav div:hover {
@@ -315,30 +328,30 @@
         }
 
         .achievementTable tr td div {
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: 2.08vw;
+            height: 2.08vw;
+            line-height: 2.08vw;
             background-color: gray;
             border: 1px solid black;
-            border-radius: 4px;
+            border-radius: 0.21vw;
             text-align: center;
         }
 
         .achievementIcon {
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            width: 2.08vw;
+            height: 2.08vw;
+            line-height: 2.08vw;
             background-color: gray;
             border: 1px solid black;
-            border-radius: 4px;
+            border-radius: 0.21vw;
             text-align: center;
         }
 
         .close {
             background-color: rgb(236, 236, 236);
             cursor: pointer;
-            width: 25px;
-            height: 25px;
+            width: 1.3vw;
+            height: 1.3vw;
         }
 
         .close:hover {
@@ -358,8 +371,8 @@
             width: 100%; /* Width of the outside container */
             background-color: lightblue;
             border: 2px solid black;
-            border-radius: 5px;
-            padding-left: 10px;
+            border-radius: 0.26vw;
+            padding-left: 0.52vw;
         }
 
     </style>
@@ -378,22 +391,22 @@
             <table border="3">
                 <tr>
                     <td bgcolor=#f9ddab>
-                        <div class="handle" id="handle5" style="display:inline-block; width:97%">
-                            <b><font size="5">About This Game</font></b></div>
-                        <div style="float:right">
+                        <div class="handle" id="handle5" style="display:inline-block; width:97%; font-size: 1.5vw;">
+                            <b>About This Game</b></div>
+                        <div style="float:right; font-size: 0.9vw">
                             <button class="close"
                                 onclick="document.getElementById('aboutWindow').style.display = 'none'">
-                                <font size='3'>x</font></button> 
+                                x</button> 
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td> <!-- About This Game -->
+                    <td style="font-size: 1.05vw"> <!-- About This Game -->
                         <div id="greekButton" style="display:none"><button
                             onclick="greek()">
-                            <b>Greek</b></button></div>
+                            <b><div style="font-size: 1.05vw">Greek</div></b></button></div>
                         <div id="freeK" style="display:none"><button onclick="freeK()">
-                            <b>Give Me Knowledge!</b></button></div>
+                            <b><div style="font-size: 1.05vw">Give Me Knowledge!</div></b></button></div>
                         <b>Welcome</b><br>
                         Welcome to College Algebra Incremental! This game was modeled off the incremental/"idle" game genre.
                         The gameplay of incremental games tends to boil down to performing various simple actions to make
@@ -449,7 +462,7 @@
                         In this game, there be big numbers. Big, big numbers. Like, huge numbers.
                         This game might actually be somewhat educational for you.
                         Here is a chart of numbers you may encounter:<br><br>
-                        <table border="2" style="margin-left: 25px"> <!-- Table of large numbers-->
+                        <table border="2" style="margin-left: 1.3vw"> <!-- Table of large numbers-->
                             <tr bgcolor=#f9ddab>
                                 <th>Number Name</th><th>Abbrev.</th><th>Power</th><th>Value</th>
                             </tr>
@@ -592,7 +605,7 @@
                         There are a few more levels to progress through for each question type. Buying these upgrades is optional,
                             but you may find that doing some of them helps you progress more quickly. Here are the levels to unlock:
                         <br><br>
-                        <table border="3" style="width:40%; margin-left:25px"> <!-- Table of metal levels -->
+                        <table border="3" style="width:40%; margin-left: 1.3vw"> <!-- Table of metal levels -->
                             <tr>
                                 <td colspan="10" bgcolor="#f9ddab">
                                     <div><b>Metal Levels For Each Question Type</b></div>
@@ -712,12 +725,12 @@
             <table border="3" style="width:100%">
                 <tr class="handle" id="handle1">
                     <td bgcolor=#f9ddab>
-                        <b><font size="5">Select backup file to use for restore:</font></b>
+                        <b><div style="font-size: 1.5vw">Select backup file to use for restore:</div></b>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="file" id="restoreFile" accept=".txt" style="margin:10px" onchange="
+                        <input type="file" id="restoreFile" accept=".txt" style="margin: 0.52vw; font-size: 1vw" onchange="
                             var reader = new FileReader();
                             reader.addEventListener('load', function(){
                                 myString = this.result;
@@ -726,20 +739,20 @@
                             "><br><br>
                         <button class="shinyButton" id="restoreButton" style="visibility:visible"
                             onclick="loadGame(myString);
-                            "><font size="5">RESTORE</font></button>
+                            "><div style="font-size: 1.5vw">RESTORE</div></button>
                         <button class="shinyButton" id="restoreCancel" style="visibility:visible"
                             onclick="
-                            document.getElementById('restoreWindow').style = 'position:absolute; z-index:1000; display:none'
-                            "><font size="5">CANCEL</font></button>
+                            document.getElementById('restoreWindow').style = 'position:absolute; display:none'
+                            "><div style="font-size: 1.5vw">CANCEL</div></button>
                     </td>
                 </tr>
             </table>
         </div>
         <div id="resetWindow" class="moveable" style="display:none">
-            <table border="3">
+            <table border="3" style="font-size: 1.05vw">
                 <tr class="handle" id="handle2">
                     <td bgcolor=#f9ddab>
-                        <b><font size="5">Completely reset your game?</font></b>
+                        <b><div style="font-size: 1.5vw">Completely reset your game?</div></b>
                     </td>
                 </tr>
                 <tr>
@@ -750,19 +763,19 @@
                         <br><br>
                         Type "confirm" in the box and click RESET.
                         <br><br>
-                        <input type="text" id="confirmText"
+                        <input type="text" id="confirmText" style="font-size: 1.05vw"
                             onkeypress="if (event.key == 'Enter'){
                                 document.getElementById('resetButton').click();
                                 document.getElementById('confirmText').value = ''}">
                         <br><br>
                         <button class="shinyButton" id="resetButton" style="visibility:visible"
                             onclick="resetGame();
-                            "><font size="5">RESET</font></button>
+                            "><div style="font-size: 1.5vw">RESET</div></button>
                         <button class="shinyButton" id="resetCancel" style="visibility:visible"
                             onclick="
-                            document.getElementById('resetWindow').style = 'position:absolute; z-index:1000; display:none';
+                            document.getElementById('resetWindow').style = 'position:absolute; display:none';
                             document.getElementById('confirmText').value = ''
-                            "><font size="5">CANCEL</font></button>
+                            "><div style="font-size: 1.5vw">CANCEL</div></button>
                     </td>
                 </tr>
             </table>
@@ -789,38 +802,38 @@
                 onclick="reset(); document.getElementById('confirmText').focus()"><b>Hard Reset</b></button></div>
         </div>
         <div class="item1">
-            <table border="3">
+            <table border="3" style="width:100%">
                 <tr>
                     <td bgcolor=#f9ddab>
-                        <div style="width:300px">
-                            <p style="text-align:center; margin:0px" id="gameName"><b><font size="5">
-                                College Algebra Incremental</font></b></p>
+                        <div style="font-size: 1.45vw">
+                            <p style="text-align:center; margin:0.1vw" id="gameName">
+                                <b>College Algebra Incremental</b></p>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h2 id="totalKnowledge" style="text-align:center; margin:0px"></h2>
-                        <h3 id="kps" style="text-align:center; margin:0px">per second: 0 KPS</h3>
+                        <h2 id="totalKnowledge" style="text-align:center; margin:0vw; font-size: 1.55vw"></h2>
+                        <h3 id="kps" style="text-align:center; margin:0vw; font-size: 1.2vw">per second: 0 KPS</h3>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="item2">
-            <div class="slidecontainer" style="border: 2px solid black">
-                <table style="background-color:lightblue">
-                    <tr>
-                        <td style="width:60%"><b>Sound Effects Volume:</b></td>
-                        <td>0</td>
-                        <td><input type="range" min="0" max="100" value="50" id="soundVolume"
+            <div class="slidecontainer" style="border: 0.1vw solid black; width: 95%; height: 4vh;">
+                <table style="background-color:lightblue; font-size: 1.05vw; background-color: transparent">
+                    <tr style="height: 2vh">
+                        <td style="width:54%"><b>Sound Effects Volume:</b></td>
+                        <td style="width:4%">0</td>
+                        <td style="width:32%"><input type="range" min="0" max="100" value="50" id="soundVolume"
                             style="display:inline-block; width:100%"></td>
-                        <td>100</td>
+                        <td style="width:10%">100</td>
                     </tr>
                 </table>
             </div>
             <div id="playerDiv">
-                <label style="color:white"><b>Music Player:</b></label>
-                <select id="musicSelect" style="width:60%">
+                <label style="color:white; font-size: 1vw"><b>Music Player:</b></label>
+                <select id="musicSelect" style="width:68%; height: 3vh; font-size: 1vw">
                     <optgroup label="Music: Copper Level" id="copperMusic">
                         <option>Acoustic Motivation</option>
                         <option>Cinematic Documentary</option>
@@ -882,20 +895,20 @@
                         <option>Time Technology</option>
                     </optgroup>
                 </select>
-                <audio id="player" controls>
+                <audio id="player" controls style="width:100%; height: 5vmin;">
                     <source src="" type="audio/mp3" id="playerSource">
                 </audio>
             </div>
         </div>
-        <div class="item3">
-            <div style="overflow-y: scroll; height: 105%; width: 112%; margin-top: -15px">
+        <div class="item3" style="font-size:1.02vw">
+            <div style="overflow-y: scroll; height: 100%; width: 100%">
                 <table border="3" style="width:100%">
                     <tr>
                         <td id="reviewName" bgcolor=#f9ddab style="width:14%"><b>Start Here!</b><br>Basic<br>Algebra<br>Review</td>
                         <td style="text-align:center; width:17%"><button class="shinyButton2"
-                            id="buyReview" value="ReviewQuestion" onclick="reviewQuestion()">
+                            id="buyReview" value="ReviewQuestion" onclick="reviewQuestion()" style="font-size:0.9vw">
                             Get a<br>Review<br>Question</button></td>
-                        <td id="beginningtip" colspan="4" width="100px" style="text-align:left; width:69%">You have 0 Knowledge.
+                        <td id="beginningtip" colspan="4" style="text-align:left; width:69%">You have 0 Knowledge.
                             Click the button and answer correctly to obtain 1 Knowledge.</td>
                     </tr>
                     <tr id="progressUnit1">
@@ -911,7 +924,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit1" class="shinyButton"
+                                <button id="unlockUnit1" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit1').style = 'display: none';
                                         document.getElementById('Unit1row1').style = 'display: row-block';
                                         document.getElementById('Unit1row2').style = 'display: row-block';
@@ -926,7 +939,7 @@
                                         document.getElementById('progressUnit2').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 1</font>
+                                    UNLOCK UNIT 1
                                 </button>
                             </div>
                         </td>
@@ -1045,7 +1058,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit2" class="shinyButton"
+                                <button id="unlockUnit2" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit2').style = 'display: none';
                                         document.getElementById('Unit2row1').style = 'display: row-block';
                                         document.getElementById('Unit2row2').style = 'display: row-block';
@@ -1058,7 +1071,7 @@
                                         document.getElementById('progressUnit3').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 2</font>
+                                    UNLOCK UNIT 2
                                 </button>
                             </div>
                         </td>
@@ -1068,10 +1081,10 @@
                     </tr>
                     <tr id="Unit2row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit2row3" style="display: none">
@@ -1157,7 +1170,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit3" class="shinyButton"
+                                <button id="unlockUnit3" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit3').style = 'display: none';
                                         document.getElementById('Unit3row1').style = 'display: row-block';
                                         document.getElementById('Unit3row2').style = 'display: row-block';
@@ -1170,7 +1183,7 @@
                                         document.getElementById('progressUnit4').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 3</font>
+                                    UNLOCK UNIT 3
                                 </button>
                             </div>
                         </td>
@@ -1181,10 +1194,10 @@
                     </tr>
                     <tr id="Unit3row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit3row3" style="display: none">
@@ -1270,7 +1283,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit4" class="shinyButton"
+                                <button id="unlockUnit4" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit4').style = 'display: none';
                                         document.getElementById('Unit4row1').style = 'display: row-block';
                                         document.getElementById('Unit4row2').style = 'display: row-block';
@@ -1283,7 +1296,7 @@
                                         document.getElementById('progressUnit5').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 4</font>
+                                    UNLOCK UNIT 4
                                 </button>
                             </div>
                         </td>
@@ -1293,10 +1306,10 @@
                     </tr>
                     <tr id="Unit4row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit4row3" style="display: none">
@@ -1382,7 +1395,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit5" class="shinyButton"
+                                <button id="unlockUnit5" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit5').style = 'display: none';
                                         document.getElementById('Unit5row1').style = 'display: row-block';
                                         document.getElementById('Unit5row2').style = 'display: row-block';
@@ -1392,7 +1405,7 @@
                                         document.getElementById('progressUnit6').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 5</font>
+                                    UNLOCK UNIT 5
                                 </button>
                             </div>
                         </td>
@@ -1402,10 +1415,10 @@
                     </tr>
                     <tr id="Unit5row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit5row3" style="display: none">
@@ -1461,7 +1474,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit6" class="shinyButton"
+                                <button id="unlockUnit6" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit6').style = 'display: none';
                                         document.getElementById('Unit6row1').style = 'display: row-block';
                                         document.getElementById('Unit6row2').style = 'display: row-block';
@@ -1473,7 +1486,7 @@
                                         document.getElementById('progressUnit7').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 6</font>
+                                    UNLOCK UNIT 6
                                 </button>
                             </div>
                         </td>
@@ -1484,10 +1497,10 @@
                     </tr>
                     <tr id="Unit6row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit6row3" style="display: none">
@@ -1563,7 +1576,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit7" class="shinyButton"
+                                <button id="unlockUnit7" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit7').style = 'display: none';
                                         document.getElementById('Unit7row1').style = 'display: row-block';
                                         document.getElementById('Unit7row2').style = 'display: row-block';
@@ -1576,7 +1589,7 @@
                                         document.getElementById('progressUnit8').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 7</font>
+                                    UNLOCK UNIT 7
                                 </button>
                             </div>
                         </td>
@@ -1586,10 +1599,10 @@
                     </tr>
                     <tr id="Unit7row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit7row3" style="display: none">
@@ -1675,7 +1688,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit8" class="shinyButton"
+                                <button id="unlockUnit8" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit8').style = 'display: none';
                                         document.getElementById('Unit8row1').style = 'display: row-block';
                                         document.getElementById('Unit8row2').style = 'display: row-block';
@@ -1690,7 +1703,7 @@
                                         document.getElementById('progressUnit9').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 8</font>
+                                    UNLOCK UNIT 8
                                 </button>
                             </div>
                         </td>
@@ -1700,10 +1713,10 @@
                     </tr>
                     <tr id="Unit8row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit8row3" style="display: none">
@@ -1809,7 +1822,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit9" class="shinyButton"
+                                <button id="unlockUnit9" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit9').style = 'display: none';
                                         document.getElementById('Unit9row1').style = 'display: row-block';
                                         document.getElementById('Unit9row2').style = 'display: row-block';
@@ -1822,7 +1835,7 @@
                                         document.getElementById('progressUnit10').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 9</font>
+                                    UNLOCK UNIT 9
                                 </button>
                             </div>
                         </td>
@@ -1832,10 +1845,10 @@
                     </tr>
                     <tr id="Unit9row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit9row3" style="display: none">
@@ -1921,7 +1934,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit10" class="shinyButton"
+                                <button id="unlockUnit10" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit10').style = 'display: none';
                                         document.getElementById('Unit10row1').style = 'display: row-block';
                                         document.getElementById('Unit10row2').style = 'display: row-block';
@@ -1933,7 +1946,7 @@
                                         document.getElementById('progressUnit11').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 10</font>
+                                    UNLOCK UNIT 10
                                 </button>
                             </div>
                         </td>
@@ -1944,10 +1957,10 @@
                     </tr>
                     <tr id="Unit10row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit10row3" style="display: none">
@@ -2023,7 +2036,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit11" class="shinyButton"
+                                <button id="unlockUnit11" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit11').style = 'display: none';
                                         document.getElementById('Unit11row1').style = 'display: row-block';
                                         document.getElementById('Unit11row2').style = 'display: row-block';
@@ -2037,7 +2050,7 @@
                                         document.getElementById('progressUnit12').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 11</font>
+                                    UNLOCK UNIT 11
                                 </button>
                             </div>
                         </td>
@@ -2048,10 +2061,10 @@
                     </tr>
                     <tr id="Unit11row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit11row3" style="display: none">
@@ -2147,7 +2160,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit12" class="shinyButton"
+                                <button id="unlockUnit12" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit12').style = 'display: none';
                                         document.getElementById('Unit12row1').style = 'display: row-block';
                                         document.getElementById('Unit12row2').style = 'display: row-block';
@@ -2158,7 +2171,7 @@
                                         document.getElementById('progressUnit13').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 12</font>
+                                    UNLOCK UNIT 12
                                 </button>
                             </div>
                         </td>
@@ -2168,10 +2181,10 @@
                     </tr>
                     <tr id="Unit12row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit12row3" style="display: none">
@@ -2237,7 +2250,7 @@
                                 </tr>
                             </table>
                             <div style="text-align: center">
-                                <button id="unlockUnit13" class="shinyButton"
+                                <button id="unlockUnit13" class="shinyButton" style="font-size: 2vw"
                                     onclick="document.getElementById('progressUnit13').style = 'display: none';
                                         document.getElementById('Unit13row1').style = 'display: row-block';
                                         document.getElementById('Unit13row2').style = 'display: row-block';
@@ -2250,7 +2263,7 @@
                                         document.getElementById('Unit13row9').style = 'display: row-block';
                                         gameData.unitUnlocked++;
                                         ">
-                                    <font size="5">UNLOCK UNIT 13</font>
+                                    UNLOCK UNIT 13
                                 </button>
                             </div>
                         </td>
@@ -2260,10 +2273,10 @@
                     </tr>
                     <tr id="Unit13row2" style="display: none">
                         <th bgcolor=#f9ddab style="width:14%">Purchase</th>
-                        <th bgcolor=#f9ddab style="width:18%">Cost</th>
-                        <th bgcolor=#f9ddab style="width:21%">Reward</th>
+                        <th bgcolor=#f9ddab style="width:15%">Cost</th>
+                        <th bgcolor=#f9ddab style="width:23%">Reward</th>
                         <th bgcolor=#f9ddab style="width:14%"># Correct</th>
-                        <th bgcolor=#f9ddab style="width:21%">KPS</th>
+                        <th bgcolor=#f9ddab style="width:22%">KPS</th>
                         <th bgcolor=#f9ddab style="width:12%">KPS %</th>
                     </tr>
                     <tr id="Unit13row3" style="display: none">
@@ -2339,48 +2352,41 @@
                 </table>
             </div>
         </div>
-        <div class="item4 questionArea" id="question" style="display:block; background: url('whiteboard.png');
-                background-repeat: no-repeat; background-size:cover; height:650px; width:750px;
-                padding-top: 75px; padding-left: 50px; padding-right: 50px; margin-top:-25px; margin-bottom:-150px">
-            <div id="mathProblemType" style="height:20px; color:blue"></div>
-            <div class="cmath" id="mathProblem" style="font-size: 24px; padding-left:30px; padding-right:30px; 
-                padding-top:0px; height: 61%; color: black" >
-            </div>
-            <div id="answerdiv" style="text-align:left; display:none">
-                <div style="display:inline-block; margin:15px">
+        <div class="item4" id="question">
+            <div id="mathProblemType" style="color:blue"></div>
+            <div class="cmath" id="mathProblem" style="font-size: 1.25vw; color: black"></div>
+            <div id="answerdiv" style="text-align:left; display:none; top: 80%; position: absolute">
+                <div style="display:inline-block; margin: 0.78vw">
                     <input type="text"
                         name="answer"
                         id="answer"
-                        style="width: 250px; height: 40px; font-size: 24px;"
+                        style="width: 100%; height: 2.08vw; font-size: 1.25vw;"
                         onkeypress="if (event.key == 'Enter' && document.getElementById('checkButton').style.display == 'block')
                                             {document.getElementById('checkButton').click()}">
                 </div>
                 <div style="display:inline-block">
                     <input class="buyButton" type="button" id="checkButton" value="Check Answer" onclick="check()">
-
                 </div>
                 <div id="feedback" style="display:inline-block"></div>
             </div>
-            
-            
         </div>
-        <div class="item5" id="upgradeBox" style="display:block; margin-left: 5px">
+        <div class="item5" id="upgradeBox" style="display:block; margin-left: 0.26vw">
             <table border="3" id="upgradeTable">
                 <tr>
-                    <td bgcolor=#f9ddab style="height:20px; width:600px">
-                        <div style="font-size: 20px; display: inline-block"><b>Upgrades</b></div>
+                    <td bgcolor=#f9ddab style="height: 1.04vw; width: 1fr">
+                        <div style="font-size: 1.04vw; display: inline-block"><b>Upgrades</b></div>
                         <div id="devAnswer" style="background-color:transparent; position: relative; float: right"></div>
                     </td>
-                    <td bgcolor=#f9ddab>
+                    <td bgcolor=#f9ddab style="width:32%">
                         <div id="rubyHeader">
-                            <div style="font-size: 20px; display: inline-block"><b>Rubies</b></div>
-                            <div style="float:right" id="rubyBonus"></div>
+                            <div style="font-size: 1.04vw; display: inline-block"><b>Rubies</b></div>
+                            <div style="float: right; font-size: 1vw" id="rubyBonus"></div>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td bgcolor=#fff9ee style="height:90px">
-                        <div id="upgradeArea" style="height:90px; overflow:hidden"></div>
+                    <td bgcolor=#fff9ee>
+                        <div id="upgradeArea" style="height:4.69vw; overflow:hidden"></div>
                     </td>
                     <td bgcolor=#fff9ee>
                         <div id="rubyArea">
@@ -2388,25 +2394,25 @@
                                 <table>
                                     <tr>
                                         <td>
-                                            <div style="display:inline-block; margin-top:-8px"><img src="ruby.png"
-                                                style="width:40px; height:30px; display:inline-block; margin-top:10px">&nbsp;</div>
+                                            <div style="display:inline-block; margin-top:-1vw"><img src="ruby.png"
+                                                style="width:2.08vw; height:1.56vw; display:inline-block">&nbsp;</div>
                                         </td>
-                                        <td style="padding-bottom:12px">
-                                            <div id="rubies" style="display:inline-block; width:50px; margin-top:-10px"></div>
+                                        <td style="padding-bottom:0.63vw">
+                                            <div id="rubies" style="display:inline-block; width:2.6vw; margin-top:-0.52vw"></div>
                                         </td>
-                                        <td style="padding-bottom:20px">
-                                            <div style="float: right; margin-top:-15px">
+                                        <td style="padding-bottom:1.04vw">
+                                            <div style="float: right; margin-top:-0.78vw">
                                                 <button id="buyRubyButton" class="shinyButton2"
-                                                    style="margin:15px 5px 5px 5px; width:140px"
+                                                    style="margin: 0.9vw 0.26vw 0.26vw 1.5vw; width: 8vw; font-size: 0.9vw"
                                                     onclick="buyRuby()">
-                                                    Buy: <div id="rubyCost" style="display:inline-block"></div>
+                                                    Buy: <div id="rubyCost" style="display:inline-block; font-size: 0.9vw"></div>
                                                 </button>
                                             </div>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            <div style="margin-top:-25px">
+                            <div style="margin-top:-1vw; font-size: 1vw">
                                 A ruby costs 2 hours of your current KPS, so plan wisely! Each ruby adds 1% to your base KPS.
                             </div>
                         </div>
@@ -2414,12 +2420,12 @@
                 </tr>
             </table>
         </div>
-        <div id="streak" style="position:absolute; left:80%; top:0.5%; color:white; z-index: 501">
+        <div id="streak" style="position:absolute; left:80%; top:0.5%; color:white; z-index: 501; font-size: 1vw">
         </div>
         <div id="clickable" class="greekScale" style="position:absolute; display:none; z-index:2000">
             <div class="fade-in">
                 <button id="clickableButton" class="greekSpin"
-                    style="border:0px; border-radius:50%; height:75px; width:75px; cursor:pointer"
+                    style="border:0vw; border-radius:50%; height:3.91vw; width:3.91vw; cursor:pointer"
                     onclick="getGreek()">
                 </button>
             </div>
@@ -2432,12 +2438,12 @@
         <div class="moveable" id="achievementWindow" style="display:none" >
             <table border="3">
                 <tr>
-                    <td bgcolor=#f9ddab style="font-size:24px; font-weight: bold;">
+                    <td bgcolor=#f9ddab style="font-size:1.25vw; font-weight: bold;">
                         <div class="handle" id="handle4" style="display:inline-block; width:96%"></div>
-                        <div style="float:right; margin-top:-3px">
-                            <button class="close"
+                        <div style="float:right; margin-top:-0.16vw">
+                            <button class="close" style="font-size: 0.9vw"
                                 onclick="document.getElementById('achievementWindow').style.display = 'none'">
-                                <font size='3'>x</font></button>
+                                x</button>
                         </div>
                     </td>
                 </tr>
@@ -2948,12 +2954,12 @@
         <div class="moveable" id="statsWindow" style="display:none">
             <table border="3" style="width:100%">
                 <tr>
-                    <td bgcolor=#f9ddab style="font-size:24px; font-weight: bold;">
+                    <td bgcolor=#f9ddab style="font-size:1.25vw; font-weight: bold;">
                         <div class="handle" id="handle3" style="display:inline-block; width:90%">Statistics</div>
-                        <div style="float:right; margin-top:-3px">
-                            <button class="close"
+                        <div style="float:right; margin-top:-0.16vw">
+                            <button class="close" style="font-size: 0.9vw"
                                 onclick="document.getElementById('statsWindow').style.display = 'none'">
-                                <font size='3'>x</font></button>
+                                x</button>
                         </div>
                     </td>
                 </tr>
@@ -2963,7 +2969,7 @@
                        <div id="statKPS"></div>
                        <div id="statCmKnowledge"></div>
                        <div id="statUniqueGreeks"></div>
-                       <div id="whichGreeks" style="padding-left:15px"></div>
+                       <div id="whichGreeks" style="padding-left:0.78vw"></div>
                        <div id="statTotalGreeks"></div>
                        <div id="statRubies"></div>
                        <div id="statAchievements"></div>

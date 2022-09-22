@@ -731,7 +731,7 @@ function resetGame() {
     upgradeArea.innerHTML = ""
     document.getElementById("mathProblem").innerHTML = ""
     document.getElementById("mathProblemType").innerHTML = ""
-    document.getElementById("answerdiv").style = "display:none"
+    document.getElementById("answerdiv").style.display = "none"
     for (let i = 1; i < 78; i++) {
       document.getElementById("buyT" + i + "cell").style.backgroundColor = ""
     }
@@ -827,7 +827,7 @@ function greek() {
   document.getElementById("clickable").style.display = "block";
   document.getElementById("clickableButton").style.backgroundImage = "url('zgreek" + i + ".png')";
   document.getElementById("clickableButton").style.backgroundRepeat = "no-repeat";
-  document.getElementById("clickableButton").style.backgroundSize = "40px";
+  document.getElementById("clickableButton").style.backgroundSize = "2.08vw";
   document.getElementById("clickableButton").style.backgroundPosition = "center";
   document.getElementById("clickableButton").style.backgroundColor = "transparent";
   document.getElementById("clickable").style.left = xp + "%" //6 to 88
@@ -844,17 +844,18 @@ function getGreek() {
   type = Math.ceil(Math.random() * 25) //1 to 25
   document.getElementById("clickableRewardBox").style.display = "block"
   document.getElementById("clickableReward").style.textAlign = "center"
-  document.getElementById("clickableReward").style.fontSize = "30px"
+  document.getElementById("clickableReward").style.fontSize = "1.56vw"
   if (type == 1) {
     greekRuby.play()
     document.getElementById("clickableReward").innerHTML = "<b><font color=green>" + greekCurrent + "</font> has given you a ruby!<br>"
       + "<table style='margin:auto; background-color:rgba(0,0,0,0)'><tr><td>+1</td>" + 
-      "<td><img src='ruby.png' style='width:40px; height:30px; display:inline-block; margin-top:10px'></td></tr></table></font></b>"
+      "<td><img src='ruby.png' style='width:2.08vw; height:1.56vw; display:inline-block; margin-top:0.52vw'></td></tr></table></font></b>"
     gameData.rubies++
     var oldFactor = gameData.rubyBonus;
     gameData.rubyBonus = Math.round((1 + gameData.rubies / 100) *100) / 100;
     var newFactor = gameData.rubyBonus / oldFactor;
-    document.getElementById("rubies").innerHTML = "<font size='6'>" + gameData.rubies + "</font> ";
+    document.getElementById("rubies").style.fontSize = "2vw"
+    document.getElementById("rubies").innerHTML = gameData.rubies;
     document.getElementById("totalKnowledge").innerHTML = convertKnowledge(gameData.knowledge);
     document.getElementById("rubyBonus").innerHTML = "(Base KPS x " + gameData.rubyBonus.toFixed(2) + ")";
     gameData.kps = multiply(gameData.kps,[newFactor,0]);
@@ -1132,7 +1133,7 @@ function buyQuestion(i) {
   if (subtract(gameData.knowledge,costT[i]) != 0) { //Remember we define the subtraction to be 0 if larger from smaller
     gameData.knowledge = subtract(gameData.knowledge,costT[i])
     document.getElementById("totalKnowledge").innerHTML = convertKnowledge(gameData.knowledge)
-    document.getElementById("answerdiv").style = "display:inline-block"
+    document.getElementById("answerdiv").style.display = "inline-block"
     document.getElementById("checkButton").style = "display:block"
     
     if (i == 1) { //Evaluate function using graph
@@ -1307,7 +1308,7 @@ function buyQuestion(i) {
       var b = Math.ceil(Math.random() * 2) + 1
       var x = b * a ** 2
       document.getElementById("mathProblem").innerHTML = "Simplify `sqrt(" + x + ")`.<br>" +
-        "<font size='3'> To enter a number like `6sqrt(7)`, you must type it as 6*sqrt(7).</font>"
+        "<small> To enter a number like `6sqrt(7)`, you must type it as 6*sqrt(7).</small>"
       answer = a + "*sqrt(" + b + ")"
       answerString = 1
     }
@@ -1324,7 +1325,7 @@ function buyQuestion(i) {
       var x = Math.ceil(Math.random() * 9) + 1
       var c = a * x ** 2 + b
       document.getElementById("mathProblem").innerHTML = "Solve `" + a + "x^2+" + b + "=" + c + "` using the square root property.<br>"
-        + "<font size='3'>You will get two answers. Enter both answers separated by a comma and no spaces.</font>"
+        + "<small>You will get two answers. Enter both answers separated by a comma and no spaces.</small>"
       answer = [x + ",-" + x, "-" + x + "," + x]
       answerString = 2
     }
@@ -1344,7 +1345,7 @@ function buyQuestion(i) {
       var x1 = (a - b) / 2
       var x2 = (a + b) / 2
       document.getElementById("mathProblem").innerHTML = "Solve `|-2x+" + a + "|=" + b + "`<br>"
-        + "<font size='3'>You will get two answers. Enter both answers separated by a comma and no spaces.</font>"
+        + "<small>You will get two answers. Enter both answers separated by a comma and no spaces.</small>"
       answer = [x1 + "," + x2 , x2 + "," + x1]
       answerString = 2
     }
@@ -1354,7 +1355,7 @@ function buyQuestion(i) {
       var x1 = a
       var x2 = - b
       document.getElementById("mathProblem").innerHTML = "Solve `(n-" + a + ")(n+" + b + ")=0`.<br>"
-        + "<font size='3'>You will get two answers. Enter both answers separated by a comma and no spaces.</font>"
+        + "<small>You will get two answers. Enter both answers separated by a comma and no spaces.</small>"
       answer = [x1 + "," + x2 , x2 + "," + x1]
       answerString = 2
     }
@@ -1493,7 +1494,7 @@ function buyQuestion(i) {
       var dm = - d
       text = "Find the zeros of the cubic function<br>" + 
         "`f(x)=" + a + "x^3+" + b + "x^2+" + c + "x+" + d + "`.<br>" +
-        "<font size='3'>Separate all three answers with commas and no spaces. Write fractions like -4/7.</font>"
+        "<small>Separate all three answers with commas and no spaces. Write fractions like -4/7.</small>"
       document.getElementById("mathProblem").innerHTML =
         text.replace("1x^2","x^2").replace("1x","x").replace("+-","-").replace("+-","-").replace("+-","-")
       answer = [ bm + "/" + a + "," + cm + "," + dm ,
@@ -2535,7 +2536,8 @@ function buyRuby() {
   var oldFactor = gameData.rubyBonus;
   gameData.rubyBonus = Math.round((1 + gameData.rubies / 100) * 100) / 100;
   var newFactor = gameData.rubyBonus / oldFactor;
-  document.getElementById("rubies").innerHTML = "<font size='6'>" + gameData.rubies + "</font> ";
+  document.getElementById("rubies").style.fontSize = "2vw"
+  document.getElementById("rubies").innerHTML = gameData.rubies;
   document.getElementById("totalKnowledge").innerHTML = convertKnowledge(gameData.knowledge);
   document.getElementById("rubyBonus").innerHTML = "(Base KPS x " + gameData.rubyBonus.toFixed(2) + ")";
   gameData.kps = multiply(gameData.kps,[newFactor,0]);
@@ -2555,7 +2557,7 @@ function buyRuby() {
 function check() {
   if (answerString == 1) { // If answer is a string like DNE...
     var uanswer = document.getElementById("answer").value
-    if (uanswer == answer || devtools == true) {
+    if (uanswer == answer) {
       document.getElementById("feedback").innerHTML = "Correct!"
       document.getElementById("feedback").style.color = "green"
       if (z == 0) {
@@ -2620,7 +2622,7 @@ function check() {
   }
   else if (answerString == 2) { // If you are checking that multiple answers separated with a comma are correct independent of order
     var uanswer = document.getElementById("answer").value
-    if (answer.indexOf(uanswer) > -1 || devtools == true) {
+    if (answer.indexOf(uanswer) > -1) {
       document.getElementById("feedback").innerHTML = "Correct!"
       document.getElementById("feedback").style.color = "green"
       if (z == 0) {
@@ -2685,7 +2687,7 @@ function check() {
   }
   else { // If answer is a string that is a number
     var uanswer = eval(document.getElementById("answer").value)
-    if (Math.abs(uanswer - answer) <= tolerance*Math.abs(answer) || devtools == true) {
+    if (Math.abs(uanswer - answer) <= tolerance*Math.abs(answer)) {
       document.getElementById("feedback").innerHTML = "Correct!"
       document.getElementById("feedback").style.color = "green"
       if (z == 0) { //If it's a review question
@@ -2992,7 +2994,8 @@ function initialize() {
   }
   document.getElementById("totalKnowledge").innerHTML = convertKnowledge(gameData.knowledge)
   document.getElementById("kps").innerHTML = "per second: " + convertNumber(gameData.kps) + " KPS"
-  document.getElementById("rubies").innerHTML = "<font size='6'>" + gameData.rubies + "</font> "
+  document.getElementById("rubies").style.fontSize = "2vw"
+  document.getElementById("rubies").innerHTML = gameData.rubies
   document.getElementById("rubyCost").innerHTML = convertNumber(gameData.rubyCost)
   document.getElementById("rubyBonus").innerHTML = "(Base KPS x " + gameData.rubyBonus.toFixed(2) + ")"
   for (let i = 1; i < numberOfQ + 1; i++) {
@@ -3015,7 +3018,7 @@ function initialize() {
     document.getElementById("freeK").style.display = "block"
     document.getElementById("greekButton").style.display = "block"
     for (let i = 1; i < 14; i++) {
-      document.getElementById("unlockUnit"+i).style.visibility = "hidden" // hidden or visible
+      document.getElementById("unlockUnit"+i).style.visibility = "visible" // hidden or visible
     }
   }
   else {
@@ -3197,9 +3200,9 @@ for (let i = 1; i < 6; i++) {
   addMusicButton[i].classList.add("buyButton")
   addMusicButton[i].classList.add(iconmusic[i])
   addMusicButton[i].innerHTML =
-    "<b>Buy Music<br><br><font size='5'></font><br><font size=1vw>Cost: " + convertNumber(musicUpgradeCost[i]) +
-    "</font></b>"
-  addMusicButton[i].style = "background-color: white; margin: 5px"
+    "<b>Buy Music<br><br><br>Cost: " + convertNumber(musicUpgradeCost[i]) + "</b>"
+  addMusicButton[i].style =
+    "background-color: white; margin: 0.26vw; font-size: 0.6vw; line-height:1vw"
   addMusicButton[i].addEventListener('click', function() {
     purchaseUpgradeAddMusic(i);
     addMusicButton[i].style.display = "none";
@@ -3235,7 +3238,7 @@ function levelUpT(i) {
     document.getElementById("kps").innerHTML = "per second: " + convertNumber(gameData.kps) + " KPS"
     kpsFromT[i] = multiply(kpsFromT[i],rewardFactor[levelT[i]]) 
     document.getElementById("kpsFromT" + i).innerHTML = convertNumber(kpsFromT[i]) + " KPS"
-    for (let j=1; j < numberOfQ + 1; j++) {
+    for (let j = 1; j < numberOfQ + 1; j++) {
       c = divide(kpsFromT[j],gameData.kps)
       document.getElementById("kpsPctFromT" + j).innerHTML =
         Math.round(c[0] * 10 ** (3 * c[1]) *10000)/100 + "%"
@@ -3501,12 +3504,12 @@ var upgradeButton = [
   [0,0,document.createElement("button"),document.createElement("button"),document.createElement("button"),document.createElement("button")],
   [0,0,document.createElement("button"),document.createElement("button"),document.createElement("button"),document.createElement("button")],
 ]
-
 for (let i = 1; i < 78; i++) {
   for (let j = 2; j < 6; j++) {
-    upgradeButton[i][j].innerHTML = "<b>Lvl Up T-" + i + "<br><br><font size='5'></font><br><font size=1vw>Cost: "
-      + upgradeCost[i][j][0] + " " + abbr[upgradeCost[i][j][1]] + "</font></b>"
-    upgradeButton[i][j].style = "background-color: white; margin: 5px"
+    upgradeButton[i][j].innerHTML = "<b>Lvl Up T-" + i + "<br><br><br>Cost: "
+      + upgradeCost[i][j][0] + " " + abbr[upgradeCost[i][j][1]] + "</b>"
+    upgradeButton[i][j].style =
+      "background-color: white; margin: 0.26vw; font-size: 0.6vw; line-height:1vw"
     upgradeButton[i][j].classList.add("buyButton")
     upgradeButton[i][j].addEventListener('click', function() {
       levelUpT(i);
@@ -3643,122 +3646,6 @@ var newDiv =
   document.createElement("div"),document.createElement("div")
 ]
 
-// var achievementIcon =
-//   [0,document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div"),document.createElement("div"),document.createElement("div"),
-//   document.createElement("div"),document.createElement("div")
-// ]
-
 function achievementCheck() {
   var hadAchievement = Array(451).fill(0)
   //So weird, if I defined hadAchievement = haveAchievement, then "had" would change whenever "have" changed
@@ -3772,19 +3659,19 @@ function achievementCheck() {
       haveAchievement[i] = 1
       document.getElementById("achievement"+i).style = "background-color: white"
       document.getElementById("achievement"+i).style.fontWeight = "bold"
-      document.getElementById("achievement"+i).style.lineHeight = "30px"
+      document.getElementById("achievement"+i).style.lineHeight = "1.56vw"
       document.getElementById("achievement"+i).innerHTML = "1 " + abbr[i]
       document.getElementById("achievement"+i).title = "Earned 1 " + abbr[i] + " cumulative Knowledge."
       document.getElementById("achievement"+i).style.backgroundImage = "url('lightbulb.jpg')"
       document.getElementById("achievement"+i).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+i).style.backgroundSize = "40px";
+      document.getElementById("achievement"+i).style.backgroundSize = "2.08vw";
       document.getElementById("achievement"+i).style.backgroundPosition = "center";
       document.getElementById("achievement"+i).style.backgroundColor = "transparent";
       if (i > 14 && i < 21) {
-        document.getElementById("achievement"+i).style.fontSize = "12px"
+        document.getElementById("achievement"+i).style.fontSize = "0.62vw"
       }
       else {
-        document.getElementById("achievement"+i).style.fontSize = "14px"
+        document.getElementById("achievement"+i).style.fontSize = "0.73vw"
       }
     }
   }
@@ -3796,13 +3683,13 @@ function achievementCheck() {
       document.getElementById("achievement"+j).style.textAlign = "left"
       document.getElementById("achievement"+j).style.fontWeight = "bold"
       document.getElementById("achievement"+j).style.color = "white"
-      document.getElementById("achievement"+j).style.lineHeight = "20px"
+      document.getElementById("achievement"+j).style.lineHeight = "1.04vw"
       document.getElementById("achievement"+j).innerHTML = "<br>&nbsp;U" + i
       document.getElementById("achievement"+j).title = "Unlocked Unit " + i
-      document.getElementById("achievement"+j).style.fontSize = "12px"
+      document.getElementById("achievement"+j).style.fontSize = "0.62vw"
       document.getElementById("achievement"+j).style.backgroundImage = "url('unlock.png')"
       document.getElementById("achievement"+j).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+j).style.backgroundSize = "40px";
+      document.getElementById("achievement"+j).style.backgroundSize = "2.08vw";
       document.getElementById("achievement"+j).style.backgroundPosition = "center";
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
@@ -3818,7 +3705,7 @@ function achievementCheck() {
     if (totalNumberCorrect >= indexNumber[i]) {
       m++
       haveAchievement[j] = 1
-      document.getElementById("achievement"+j).style.lineHeight = "20px"
+      document.getElementById("achievement"+j).style.lineHeight = "1.04vw"
       document.getElementById("achievement"+j).style.fontWeight = "bold"
       document.getElementById("achievement"+j).innerHTML = index[i]
       if (i == 1) {
@@ -3827,10 +3714,10 @@ function achievementCheck() {
       else {
         document.getElementById("achievement"+j).title = "Answered " + index[i] + " questions correctly"
       }
-      document.getElementById("achievement"+j).style.fontSize = "16px"
+      document.getElementById("achievement"+j).style.fontSize = "0.83vw"
       document.getElementById("achievement"+j).style.backgroundImage = "url('question.png')"
       document.getElementById("achievement"+j).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+j).style.backgroundSize = "40px";
+      document.getElementById("achievement"+j).style.backgroundSize = "2.08vw";
       document.getElementById("achievement"+j).style.backgroundPosition = "bottom";
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
@@ -3845,7 +3732,7 @@ function achievementCheck() {
     if (numberUniqueGreeks >= index[i]) {
       m++
       haveAchievement[j] = 1
-      document.getElementById("achievement"+j).style.lineHeight = "25px"
+      document.getElementById("achievement"+j).style.lineHeight = "1.3vw"
       document.getElementById("achievement"+j).style.fontWeight = "bold"
       document.getElementById("achievement"+j).style.textAlign = "left"
       document.getElementById("achievement"+j).innerHTML = "&nbsp;" + index[i]
@@ -3855,10 +3742,10 @@ function achievementCheck() {
       else {
         document.getElementById("achievement"+j).title = "Collected " + index[i] + " unique Greek letters"
       }
-      document.getElementById("achievement"+j).style.fontSize = "16px"
+      document.getElementById("achievement"+j).style.fontSize = "0.83vw"
       document.getElementById("achievement"+j).style.backgroundImage = "url('greek.png')"
       document.getElementById("achievement"+j).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+j).style.backgroundSize = "40px";
+      document.getElementById("achievement"+j).style.backgroundSize = "2.08vw";
       document.getElementById("achievement"+j).style.backgroundPosition = "right";
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
@@ -3869,7 +3756,7 @@ function achievementCheck() {
     if (gameData.rubies >= index[i]) {
       m++
       haveAchievement[j] = 1
-      document.getElementById("achievement"+j).style.lineHeight = "32px"
+      document.getElementById("achievement"+j).style.lineHeight = "1.67vw"
       document.getElementById("achievement"+j).style.color = "white"
       document.getElementById("achievement"+j).innerHTML = "<b>" + index[i] + "</b>"
       if (i == 1) {
@@ -3878,10 +3765,10 @@ function achievementCheck() {
       else {
         document.getElementById("achievement"+j).title = "Collected " + index[i] + " rubies"
       }
-      document.getElementById("achievement"+j).style.fontSize = "16px"
+      document.getElementById("achievement"+j).style.fontSize = "0.83vw"
       document.getElementById("achievement"+j).style.backgroundImage = "url('ruby.png')"
       document.getElementById("achievement"+j).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+j).style.backgroundSize = "56px";
+      document.getElementById("achievement"+j).style.backgroundSize = "2.92vw";
       document.getElementById("achievement"+j).style.backgroundPosition = "center";
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
@@ -3892,13 +3779,13 @@ function achievementCheck() {
     if (gameData.streak >= index[i]) {
       m++
       haveAchievement[j] = 1
-      document.getElementById("achievement"+j).style.lineHeight = "48px"
+      document.getElementById("achievement"+j).style.lineHeight = "2.5vw"
       document.getElementById("achievement"+j).innerHTML = "<b>" + index[i] + "</b>"
       document.getElementById("achievement"+j).title = "Answered " + index[i] + " unit questions correctly in a row"
-      document.getElementById("achievement"+j).style.fontSize = "16px"
+      document.getElementById("achievement"+j).style.fontSize = "0.83vw"
       document.getElementById("achievement"+j).style.backgroundImage = "url('fire-streak.png')"
       document.getElementById("achievement"+j).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+j).style.backgroundSize = "56px";
+      document.getElementById("achievement"+j).style.backgroundSize = "2.92vw";
       document.getElementById("achievement"+j).style.backgroundPosition = "center";
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
@@ -3908,12 +3795,12 @@ function achievementCheck() {
     if (purchasedMusicUpgrade[i] == true) {
       m++
       haveAchievement[j] = 1
-      document.getElementById("achievement"+j).style.lineHeight = "48px"
+      document.getElementById("achievement"+j).style.lineHeight = "2.5vw"
       document.getElementById("achievement"+j).title = "Unlocked Music - " + musicLevel[i] + " Level"
-      document.getElementById("achievement"+j).style.fontSize = "16px"
+      document.getElementById("achievement"+j).style.fontSize = "0.83vw"
       document.getElementById("achievement"+j).style.backgroundImage = "url('" + musicCheckName[i] + ".png')"
       document.getElementById("achievement"+j).style.backgroundRepeat = "no-repeat";
-      document.getElementById("achievement"+j).style.backgroundSize = "65px";
+      document.getElementById("achievement"+j).style.backgroundSize = "3.38vw";
       document.getElementById("achievement"+j).style.backgroundPosition = "right";
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
@@ -3945,11 +3832,11 @@ function achievementCheck() {
           document.getElementById("achievement"+k).style.backgroundImage = "url('icondiamond.png')"
           document.getElementById("achievement"+k).title = "Reached Diamond Level for Type-" + i + " Question"
         }
-        document.getElementById("achievement"+k).style.lineHeight = "40px"
+        document.getElementById("achievement"+k).style.lineHeight = "2.08vw"
         document.getElementById("achievement"+k).innerHTML = "<b>" + i + "</b>"
-        document.getElementById("achievement"+k).style.fontSize = "12px"
+        document.getElementById("achievement"+k).style.fontSize = "0.62vw"
         document.getElementById("achievement"+k).style.backgroundRepeat = "no-repeat";
-        document.getElementById("achievement"+k).style.backgroundSize = "50px";
+        document.getElementById("achievement"+k).style.backgroundSize = "2.6vw";
         document.getElementById("achievement"+k).style.backgroundPosition = "center";
         document.getElementById("achievement"+k).style.backgroundColor = "white";
       }
@@ -3979,10 +3866,10 @@ function achievementCheck() {
           `<button style='padding:0px; border:0px; cursor:pointer'
             onclick='this.parentNode.classList.add("slide-away")'>
           <div><table border='3' style='table-layout: fixed; width:100%; background:lightblue'>
-          <tr><td style='padding:3px; text-align:left'>`
+          <tr><td style='padding:0.15vw; text-align:left'>`
           + "<div style='padding-left:13%'>"
-          + "<div><b>NEW ACHIEVEMENT UNLOCKED!</b><br><font size='4'>"
-          + document.getElementById("achievement"+p).title + "</font></div>"
+          + "<div><b>NEW ACHIEVEMENT UNLOCKED!</b><br><big>"
+          + document.getElementById("achievement"+p).title + "</big></div>"
           + "</div></td></tr></table></div>"
           + "</button>"
         newDiv[p].appendChild(clone)
