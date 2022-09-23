@@ -2970,7 +2970,7 @@ function shuffleArray(array) {
 
 function initialize() {
   initializeTime = Date.now()
-  if (localStorage['gameData'] != "" && localStorage['gameData'] != "undefined") {
+  if (localStorage['gameData'] != "" && localStorage['gameData'] != null) {
     gameData = JSON.parse(localStorage['gameData']);
     costT = JSON.parse(localStorage['costT']);
     kpsvector = JSON.parse(localStorage['kpsvector']);
