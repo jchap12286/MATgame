@@ -3018,7 +3018,7 @@ function initialize() {
     document.getElementById("freeK").style.display = "block"
     document.getElementById("greekButton").style.display = "block"
     for (let i = 1; i < 14; i++) {
-      document.getElementById("unlockUnit"+i).style.visibility = "visible" // hidden or visible
+      document.getElementById("unlockUnit"+i).style.visibility = "hidden" // hidden or visible
     }
   }
   else {
