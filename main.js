@@ -3853,8 +3853,8 @@ function achievementCheck() {
         clone.id = "achievementIcon"+p
         clone.style.position = "absolute"
         clone.classList.add("achievementIcon")
-        clone.style.left = "2%"
-        clone.style.top = "10%"
+        clone.style.left = "2.5%"
+        clone.style.top = "17%"
         clone.title = ""
         clone.addEventListener("click",function(){this.parentNode.classList.add("slide-away")})
         clone.style.cursor = "pointer"
@@ -3862,10 +3862,11 @@ function achievementCheck() {
         newDiv[p].style.left = "70%"
         newDiv[p].style.top = "4%"
         newDiv[p].style.width = "30%"
+        newDiv[p].style.fontSize = "1vw"
         newDiv[p].innerHTML = 
           `<button style='padding:0px; border:0px; cursor:pointer'
             onclick='this.parentNode.classList.add("slide-away")'>
-          <div><table border='3' style='table-layout: fixed; width:100%; background:lightblue'>
+          <div><table border='3' style='table-layout: fixed; width:100%; background:lightblue; font-size: 1vw'>
           <tr><td style='padding:0.15vw; text-align:left'>`
           + "<div style='padding-left:13%'>"
           + "<div><b>NEW ACHIEVEMENT UNLOCKED!</b><br><big>"
