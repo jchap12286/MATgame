@@ -18,7 +18,8 @@ var gameData = {
     rubyCost: 0,
     rubyBonus: 1,
     unitUnlocked: 0,
-    streak: 0
+    streak: 0,
+    streakHighest: 0
 }
 
 var z =                   0 //This is the tag defining whether we are working on a review problem or not.
@@ -624,7 +625,8 @@ function resetGame() {
       rubies: 0,
       rubyCost: 0,
       rubyBonus: 1,
-      streak: 0
+      streak: 0,
+      streakHighest: 0
     };
     costT = [[0,0], [5,0], [35,0], [240,0], [1.7,1], [12,1], [84,1], [580,1], [4.1,2],
               [28,2], [200,2], [1.4,3], [9.8,3], [69,3], [480,3],
@@ -2816,7 +2818,11 @@ function check() {
             "Keep doing more of these until you have enough Knowledge to purchase a regular question, "
             + "which will start to give you a passive Knowledge income."
         }
-      } else {
+      }
+      else {
+        if (gameData.streak == gameData.streakHighest) {
+          gameData.streakHighest++
+        }
         gameData.streak++
         gameData.kps = add(kpsvector[gameData.typetag],gameData.kps)
         gameData.rubyCost = multiply(gameData.kps,[7.2,1]) //This is 2 hours of KPS
@@ -2881,7 +2887,11 @@ function check() {
             "Keep doing more of these until you have enough Knowledge to purchase a regular question, "
             + "which will start to give you a passive Knowledge income."
         }
-      } else {
+      }
+      else {
+        if (gameData.streak == gameData.streakHighest) {
+          gameData.streakHighest++
+        }
         gameData.streak++
         gameData.kps = add(kpsvector[gameData.typetag],gameData.kps)
         gameData.rubyCost = multiply(gameData.kps,[7.2,1]) //This is 2 hours of KPS
@@ -2948,6 +2958,9 @@ function check() {
         }
       }
       else { //It's a unit question
+        if (gameData.streak == gameData.streakHighest) {
+          gameData.streakHighest++
+        }
         gameData.streak++
         gameData.kps = add(kpsvector[gameData.typetag],gameData.kps)
         gameData.rubyCost = multiply(gameData.kps,[7.2,1]) //This is 2 hours of KPS
@@ -4021,7 +4034,7 @@ function achievementCheck() {
   for (let i = 1; i < 5; i++) { //Streak achievements
     var j = i + 56
     var index = [0,10,50,100,250]
-    if (gameData.streak >= index[i]) {
+    if (gameData.streakHighest >= index[i]) {
       m++
       haveAchievement[j] = 1
       document.getElementById("achievement"+j).style.lineHeight = "2.5vw"
@@ -4050,7 +4063,6 @@ function achievementCheck() {
       document.getElementById("achievement"+j).style.backgroundColor = "white";
     }
   }
-
   for (let i = 1; i < 78; i++) { //Metal level achievements
     for (let j = 1; j < 6; j++) {
       var k = 65 + 5 * (i-1) + j
@@ -4120,8 +4132,16 @@ function achievementCheck() {
           + "</button>"
         newDiv[p].appendChild(clone)
         document.getElementById("container").appendChild(newDiv[p])
-        if (p > 21 && p < 35) {unlockSound.play()}
-        else {achievementSound.play()}
+        if (p > 21 && p < 35) {
+          achievementSound.pause()
+          achievementSound.currentTime = 0
+          unlockSound.play()
+        }
+        else {
+          achievementSound.pause()
+          achievementSound.currentTime = 0
+          achievementSound.play()
+        }
       }
     }
   }
@@ -4149,6 +4169,10 @@ function statsUpdate() {
     = "<b>Unique Greek Letters Obtained:</b> " + numberUniqueGreeks
   document.getElementById("statTotalGreeks").innerHTML
     = "<b>Total Greek Letters Clicked:</b> " + numberTotalGreeks
+  document.getElementById("statCurrentStreak").innerHTML
+    = "<b>Current Streak:</b> " + gameData.streak
+  document.getElementById("statHighestStreak").innerHTML
+    = "<b>Highest Streak:</b> " + gameData.streakHighest
   document.getElementById("statRubies").innerHTML
     = "<b>Rubies Found:</b> " + gameData.rubies
   document.getElementById("statAchievements").innerHTML
