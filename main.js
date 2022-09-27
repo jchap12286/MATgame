@@ -19,7 +19,7 @@ var gameData = {
     rubyBonus: 1,
     unitUnlocked: 0,
     streak: 0
-  }
+}
 
 var z =                   0 //This is the tag defining whether we are working on a review problem or not.
 var answerString =        0
@@ -287,18 +287,37 @@ document.getElementById('resetWindow').zIndex = 1005
 addEventListener('unload', (event) => { }); 
 onunload = (event) => {saveGame()}
 
+let player = document.getElementById("player")
 document.getElementById("playerSource").src = "Music/" + document.getElementById("musicSelect").value + ".mp3"
-document.getElementById("player").load()
+player.load()
 
 document.getElementById("musicSelect").onchange = function() {playSelected()}
-document.getElementById("player").addEventListener('ended',function(){playNext()})
+player.addEventListener('ended',function(){playNext()})
+document.addEventListener('keypress', function (event) {
+  if (event.key === " ") {
+    event.preventDefault()
+    if (player.style.display != "none") {
+      if (!player.paused) {
+        player.pause()
+      }
+      else {
+        player.play()
+      }
+    }
+  }
+})
+
+const disableselect = (e) => {  
+  return false  
+}  
+document.onselectstart = disableselect  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function playSelected() {
   document.getElementById("playerSource").src = "Music/" + document.getElementById("musicSelect").value + ".mp3"
-  document.getElementById("player").load()
-  document.getElementById("player").play()
+  player.load()
+  player.play()
 }
 
 function playNext() {
@@ -330,6 +349,7 @@ function about() {
     document.getElementById('aboutWindow').style = 'display:none'
   }
   document.getElementById('aboutWindow').scrollTop = 0
+  document.getElementById("aboutButton").blur()
 }
 
 function restore() {
@@ -349,6 +369,7 @@ function restore() {
   else {
     document.getElementById('restoreWindow').style = 'display:none'
   }
+  document.getElementById("openRestoreWindow").blur()
 }
 
 function achievements() {
@@ -369,6 +390,7 @@ function achievements() {
     document.getElementById('achievementWindow').style = 'display:none'
   }
   document.getElementById('achievementWindow').scrollTop = 0
+  document.getElementById("achieveButton").blur()
 }
 
 function stats() {
@@ -389,6 +411,7 @@ function stats() {
     document.getElementById('statsWindow').style = 'display:none'
   }
   document.getElementById('statsWindow').scrollTop = 0
+  document.getElementById("statsButton").blur()
 }
 
 function reset() {
@@ -409,6 +432,7 @@ function reset() {
     document.getElementById('resetWindow').style = 'display:none'
     document.getElementById('confirmText').value = ''
   }
+  document.getElementById("openResetWindow").blur()
 }
 
 function reorderZ(z,e) {
@@ -466,18 +490,18 @@ function escapeKey(z) {
 }
 
 function saveGame() {
-  localStorage['gameData'] = JSON.stringify(gameData);
-  localStorage['costT'] = JSON.stringify(costT);
-  localStorage['kpsvector'] = JSON.stringify(kpsvector);
-  localStorage['numberCorrect'] = JSON.stringify(numberCorrect);
-  localStorage['numberCorrectCommas'] = JSON.stringify(numberCorrectCommas);
-  localStorage['numberCorrectUnit'] = JSON.stringify(numberCorrectUnit);
-  localStorage['kpsFromT'] = JSON.stringify(kpsFromT);
-  localStorage['levelT'] = JSON.stringify(levelT);
-  localStorage['purchasedMusicUpgrade'] = JSON.stringify(purchasedMusicUpgrade);
-  localStorage['upgradePurchased'] = JSON.stringify(upgradePurchased);
-  localStorage['gotGreek'] = JSON.stringify(gotGreek);
-  localStorage['gotGreekTotal'] = JSON.stringify(gotGreekTotal);
+  localStorage['gameData'] = encodeString(JSON.stringify(gameData));
+  localStorage['costT'] = encodeString(JSON.stringify(costT));
+  localStorage['kpsvector'] = encodeString(JSON.stringify(kpsvector));
+  localStorage['numberCorrect'] = encodeString(JSON.stringify(numberCorrect));
+  localStorage['numberCorrectCommas'] = encodeString(JSON.stringify(numberCorrectCommas));
+  localStorage['numberCorrectUnit'] = encodeString(JSON.stringify(numberCorrectUnit));
+  localStorage['kpsFromT'] = encodeString(JSON.stringify(kpsFromT));
+  localStorage['levelT'] = encodeString(JSON.stringify(levelT));
+  localStorage['purchasedMusicUpgrade'] = encodeString(JSON.stringify(purchasedMusicUpgrade));
+  localStorage['upgradePurchased'] = encodeString(JSON.stringify(upgradePurchased));
+  localStorage['gotGreek'] = encodeString(JSON.stringify(gotGreek));
+  localStorage['gotGreekTotal'] = encodeString(JSON.stringify(gotGreekTotal));
 }
 
 function backup() {
@@ -512,7 +536,7 @@ function backup() {
     dateMS = "0" + dateMS
   }
   var blob = new Blob([
-    "mat101incrementalgamebackupfile" +
+    encodeString("mat101incrementalgamebackupfile" +
     JSON.stringify(gameData) + "_" +
     JSON.stringify(costT) + "_" +
     JSON.stringify(kpsvector) + "_" +
@@ -524,39 +548,41 @@ function backup() {
     JSON.stringify(purchasedMusicUpgrade) + "_" +
     JSON.stringify(upgradePurchased) + "_" +
     JSON.stringify(gotGreek) + "_" +
-    JSON.stringify(gotGreekTotal)
+    JSON.stringify(gotGreekTotal))
     ],{type: "text/plain;charset=utf-8"});
   saveAs(blob,"mat101backup" + dateYear + dateMonth + dateDay + "_" + dateHour + dateMinute + dateSecond + dateMS + ".txt");
     
 }
 
 function loadGame(input) {
-  if (input.substring(0,31) != "mat101incrementalgamebackupfile") {
+  if (input.substring(0,31) != encodeString("mat101incrementalgamebackupfile")) {
     alert("This is not a valid save file.")
   }
   else {
-    var thing1    = input.substring(31,input.indexOf("_"))
-    var leftover1 = input.substring(input.indexOf("_")+1)
-    var thing2    = leftover1.substring(0,leftover1.indexOf("_"))
-    var leftover2 = leftover1.substring(leftover1.indexOf("_")+1)
-    var thing3    = leftover2.substring(0,leftover2.indexOf("_"))
-    var leftover3 = leftover2.substring(leftover2.indexOf("_")+1)
-    var thing4    = leftover3.substring(0,leftover3.indexOf("_"))
-    var leftover4 = leftover3.substring(leftover3.indexOf("_")+1)
-    var thing5    = leftover4.substring(0,leftover4.indexOf("_"))
-    var leftover5 = leftover4.substring(leftover4.indexOf("_")+1)
-    var thing6    = leftover5.substring(0,leftover5.indexOf("_"))
-    var leftover6 = leftover5.substring(leftover5.indexOf("_")+1)
-    var thing7    = leftover6.substring(0,leftover6.indexOf("_"))
-    var leftover7 = leftover6.substring(leftover6.indexOf("_")+1)
-    var thing8    = leftover7.substring(0,leftover7.indexOf("_"))
-    var leftover8 = leftover7.substring(leftover7.indexOf("_")+1)
-    var thing9    = leftover8.substring(0,leftover8.indexOf("_"))
-    var leftover9 = leftover8.substring(leftover8.indexOf("_")+1)
-    var thing10   = leftover9.substring(0,leftover9.indexOf("_"))
-    var leftover10= leftover9.substring(leftover9.indexOf("_")+1)
-    var thing11   = leftover10.substring(0,leftover10.indexOf("_"))
-    var leftover11= leftover10.substring(leftover10.indexOf("_")+1)
+    var string = input
+    const sep = encodeOne("_")
+    var thing1    = string.substring(31,string.indexOf(sep))
+    var leftover1 = string.substring(string.indexOf(sep)+1)
+    var thing2    = leftover1.substring(0,leftover1.indexOf(sep))
+    var leftover2 = leftover1.substring(leftover1.indexOf(sep)+1)
+    var thing3    = leftover2.substring(0,leftover2.indexOf(sep))
+    var leftover3 = leftover2.substring(leftover2.indexOf(sep)+1)
+    var thing4    = leftover3.substring(0,leftover3.indexOf(sep))
+    var leftover4 = leftover3.substring(leftover3.indexOf(sep)+1)
+    var thing5    = leftover4.substring(0,leftover4.indexOf(sep))
+    var leftover5 = leftover4.substring(leftover4.indexOf(sep)+1)
+    var thing6    = leftover5.substring(0,leftover5.indexOf(sep))
+    var leftover6 = leftover5.substring(leftover5.indexOf(sep)+1)
+    var thing7    = leftover6.substring(0,leftover6.indexOf(sep))
+    var leftover7 = leftover6.substring(leftover6.indexOf(sep)+1)
+    var thing8    = leftover7.substring(0,leftover7.indexOf(sep))
+    var leftover8 = leftover7.substring(leftover7.indexOf(sep)+1)
+    var thing9    = leftover8.substring(0,leftover8.indexOf(sep))
+    var leftover9 = leftover8.substring(leftover8.indexOf(sep)+1)
+    var thing10   = leftover9.substring(0,leftover9.indexOf(sep))
+    var leftover10= leftover9.substring(leftover9.indexOf(sep)+1)
+    var thing11   = leftover10.substring(0,leftover10.indexOf(sep))
+    var leftover11= leftover10.substring(leftover10.indexOf(sep)+1)
     var thing12   = leftover11
 
     localStorage['gameData'] = thing1;
@@ -744,7 +770,7 @@ function resetGame() {
     initialize();
     document.getElementById('resetWindow').style = 'position:absolute; z-index:1000; display:none'
     document.getElementById("musicSelect").selectedIndex = 0
-    document.getElementById("player").pause()
+    player.pause()
   }
 }
 
@@ -1084,6 +1110,225 @@ function convertKnowledge(a) {
   }
 }
 
+function encodeOne(symbol) {
+  if (symbol == "a") {return "1"}
+  if (symbol == "b") {return "S"}
+  if (symbol == "c") {return "I"}
+  if (symbol == "d") {return "+"}
+  if (symbol == "e") {return ")"}
+  if (symbol == "f") {return "w"}
+  if (symbol == "g") {return "s"}
+  if (symbol == "h") {return "x"}
+  if (symbol == "i") {return "a"}
+  if (symbol == "j") {return "Q"}
+  if (symbol == "k") {return "p"}
+  if (symbol == "l") {return "o"}
+  if (symbol == "m") {return ";"}
+  if (symbol == "n") {return "g"}
+  if (symbol == "o") {return "Z"}
+  if (symbol == "p") {return "k"}
+  if (symbol == "q") {return "3"}
+  if (symbol == "r") {return "c"}
+  if (symbol == "s") {return "2"}
+  if (symbol == "t") {return "|"}
+  if (symbol == "u") {return ","}
+  if (symbol == "v") {return "A"}
+  if (symbol == "w") {return "!"}
+  if (symbol == "x") {return "t"}
+  if (symbol == "y") {return "%"}
+  if (symbol == "z") {return "i"}
+  if (symbol == "A") {return "0"}
+  if (symbol == "B") {return "q"}
+  if (symbol == "C") {return `"`}
+  if (symbol == "D") {return ":"}
+  if (symbol == "E") {return "9"}
+  if (symbol == "F") {return "^"}
+  if (symbol == "G") {return "L"}
+  if (symbol == "H") {return "4"}
+  if (symbol == "I") {return "v"}
+  if (symbol == "J") {return "E"}
+  if (symbol == "K") {return "6"}
+  if (symbol == "L") {return "r"}
+  if (symbol == "M") {return "j"}
+  if (symbol == "N") {return "."}
+  if (symbol == "O") {return "e"}
+  if (symbol == "P") {return "@"}
+  if (symbol == "Q") {return "O"}
+  if (symbol == "R") {return "d"}
+  if (symbol == "S") {return "W"}
+  if (symbol == "T") {return "*"}
+  if (symbol == "U") {return "]"}
+  if (symbol == "V") {return "b"}
+  if (symbol == "W") {return "P"}
+  if (symbol == "X") {return "u"}
+  if (symbol == "Y") {return "X"}
+  if (symbol == "Z") {return "V"}
+  if (symbol == "`") {return "8"}
+  if (symbol == "1") {return "="}
+  if (symbol == "2") {return "G"}
+  if (symbol == "3") {return "Y"}
+  if (symbol == "4") {return "'"}
+  if (symbol == "5") {return "?"}
+  if (symbol == "6") {return "N"}
+  if (symbol == "7") {return "&"}
+  if (symbol == "8") {return "`"}
+  if (symbol == "9") {return "z"}
+  if (symbol == "0") {return "{"}
+  if (symbol == "-") {return "-"}
+  if (symbol == "=") {return "F"}
+  if (symbol == "~") {return "H"}
+  if (symbol == "!") {return "M"}
+  if (symbol == "@") {return ">"}
+  if (symbol == "#") {return "U"}
+  if (symbol == "$") {return "f"}
+  if (symbol == "%") {return "$"}
+  if (symbol == "^") {return "K"}
+  if (symbol == "&") {return "R"}
+  if (symbol == "*") {return "("}
+  if (symbol == "(") {return "["}
+  if (symbol == ")") {return "l"}
+  if (symbol == "_") {return "5"}
+  if (symbol == "+") {return "C"}
+  if (symbol == "[") {return "#"}
+  if (symbol == "]") {return "_"}
+  if (symbol == ";") {return "m"}
+  if (symbol == "'") {return "B"}
+  if (symbol == ",") {return "7"}
+  if (symbol == ".") {return "y"}
+  if (symbol == "/") {return "~"}
+  if (symbol == "{") {return "J"}
+  if (symbol == "}") {return "h"}
+  if (symbol == "|") {return "/"}
+  if (symbol == ":") {return "}"}
+  if (symbol == `"`) {return "D"}
+  if (symbol == "<") {return "<"}
+  if (symbol == ">") {return "T"}
+  if (symbol == "?") {return "n"}
+  else {return symbol}
+}
+
+function encodeString(string) {
+  var myString = string
+  var current = ""
+  var suffix = ""
+  for (let i = 0; i < string.length + 1; i++) {
+    prefix = myString.substring(0,i)
+    current = myString.substring(i,i+1)
+    suffix = myString.substring(i+1)
+    myString = prefix + encodeOne(current) + suffix
+  }
+  return myString
+}
+
+function decodeOne(symbol) {
+  if (symbol == "a") {return "i"}
+  if (symbol == "b") {return "V"}
+  if (symbol == "c") {return "r"}
+  if (symbol == "d") {return "R"}
+  if (symbol == "e") {return "O"}
+  if (symbol == "f") {return "$"}
+  if (symbol == "g") {return "n"}
+  if (symbol == "h") {return "}"}
+  if (symbol == "i") {return "z"}
+  if (symbol == "j") {return "M"}
+  if (symbol == "k") {return "p"}
+  if (symbol == "l") {return ")"}
+  if (symbol == "m") {return ";"}
+  if (symbol == "n") {return "?"}
+  if (symbol == "o") {return "l"}
+  if (symbol == "p") {return "k"}
+  if (symbol == "q") {return "B"}
+  if (symbol == "r") {return "L"}
+  if (symbol == "s") {return "g"}
+  if (symbol == "t") {return "x"}
+  if (symbol == "u") {return "X"}
+  if (symbol == "v") {return "I"}
+  if (symbol == "w") {return "f"}
+  if (symbol == "x") {return "h"}
+  if (symbol == "y") {return "."}
+  if (symbol == "z") {return "9"}
+  if (symbol == "A") {return "v"}
+  if (symbol == "B") {return "'"}
+  if (symbol == "C") {return "+"}
+  if (symbol == "D") {return `"`}
+  if (symbol == "E") {return "J"}
+  if (symbol == "F") {return "="}
+  if (symbol == "G") {return "2"}
+  if (symbol == "H") {return "~"}
+  if (symbol == "I") {return "c"}
+  if (symbol == "J") {return "{"}
+  if (symbol == "K") {return "^"}
+  if (symbol == "L") {return "G"}
+  if (symbol == "M") {return "!"}
+  if (symbol == "N") {return "6"}
+  if (symbol == "O") {return "Q"}
+  if (symbol == "P") {return "W"}
+  if (symbol == "Q") {return "j"}
+  if (symbol == "R") {return "&"}
+  if (symbol == "S") {return "b"}
+  if (symbol == "T") {return ">"}
+  if (symbol == "U") {return "#"}
+  if (symbol == "V") {return "Z"}
+  if (symbol == "W") {return "S"}
+  if (symbol == "X") {return "Y"}
+  if (symbol == "Y") {return "3"}
+  if (symbol == "Z") {return "o"}
+  if (symbol == "`") {return "8"}
+  if (symbol == "1") {return "a"}
+  if (symbol == "2") {return "s"}
+  if (symbol == "3") {return "q"}
+  if (symbol == "4") {return "H"}
+  if (symbol == "5") {return "_"}
+  if (symbol == "6") {return "K"}
+  if (symbol == "7") {return ","}
+  if (symbol == "8") {return "`"}
+  if (symbol == "9") {return "E"}
+  if (symbol == "0") {return "A"}
+  if (symbol == "-") {return "-"}
+  if (symbol == "=") {return "1"}
+  if (symbol == "~") {return "/"}
+  if (symbol == "!") {return "w"}
+  if (symbol == "@") {return "P"}
+  if (symbol == "#") {return "["}
+  if (symbol == "$") {return "%"}
+  if (symbol == "%") {return "y"}
+  if (symbol == "^") {return "F"}
+  if (symbol == "&") {return "7"}
+  if (symbol == "*") {return "T"}
+  if (symbol == "(") {return "*"}
+  if (symbol == ")") {return "e"}
+  if (symbol == "_") {return "]"}
+  if (symbol == "+") {return "d"}
+  if (symbol == "[") {return "("}
+  if (symbol == "]") {return "U"}
+  if (symbol == ";") {return "m"}
+  if (symbol == "'") {return "4"}
+  if (symbol == ",") {return "u"}
+  if (symbol == ".") {return "N"}
+  if (symbol == "/") {return "|"}
+  if (symbol == "{") {return "0"}
+  if (symbol == "}") {return ":"}
+  if (symbol == "|") {return "t"}
+  if (symbol == ":") {return "D"}
+  if (symbol == `"`) {return "C"}
+  if (symbol == "<") {return "<"}
+  if (symbol == ">") {return "@"}
+  if (symbol == "?") {return "5"}
+  else {return symbol}
+}
+
+function decodeString(string) {
+  var myString = string
+  var current = ""
+  var suffix = ""
+  for (let i = 0; i < string.length + 1; i++) {
+    prefix = myString.substring(0,i)
+    current = myString.substring(i,i+1)
+    suffix = myString.substring(i+1)
+    myString = prefix + decodeOne(current) + suffix
+  }
+  return myString
+}
 
 function reviewQuestion() {
   z = 0 //This lets the program know this is a review question.
@@ -1180,13 +1425,13 @@ function buyQuestion(i) {
         " meters longer than it is wide, and its perimeter is " + P + " meters, find the length of the pool, in meters."
       answer = L
     }
-    else if (i == 6) { //Evaluate f(d) if f(x)=-ax+b
-      var a = 1 + Math.ceil(Math.random() * 6)
+    else if (i == 6) { //Evaluate f(d) if f(x)=ax+b
+      var a = (2 * Math.ceil(Math.random() * 2) - 3) * (1 + Math.ceil(Math.random() * 6))
       var b = Math.ceil(Math.random() * 10)
-      var d = Math.ceil(Math.random() * 5) - 6
-      document.getElementById("mathProblem").innerHTML = "For the function<br>" + "`f(x)=-" + a + "x+" + b + "`,<br>" +
+      var d = Math.ceil(Math.random() * 11) - 6
+      document.getElementById("mathProblem").innerHTML = "For the function<br>" + "`f(x)=" + a + "x+" + b + "`,<br>" +
         "evaluate `f(" + d + ")`."
-      answer = eval(-a*d+b)
+      answer = eval(a*d+b)
     }
     else if (i == 7) { //Evaluate f(d) if f(x)=ax^2-bx+c
       var a = 1 + Math.ceil(Math.random() * 4)
@@ -2971,18 +3216,18 @@ function shuffleArray(array) {
 function initialize() {
   initializeTime = Date.now()
   if (localStorage['gameData'] != "" && localStorage['gameData'] != null) {
-    gameData = JSON.parse(localStorage['gameData']);
-    costT = JSON.parse(localStorage['costT']);
-    kpsvector = JSON.parse(localStorage['kpsvector']);
-    numberCorrect = JSON.parse(localStorage['numberCorrect']);
-    numberCorrectCommas = JSON.parse(localStorage['numberCorrectCommas']);
-    numberCorrectUnit = JSON.parse(localStorage['numberCorrectUnit']);
-    kpsFromT = JSON.parse(localStorage['kpsFromT']);
-    levelT = JSON.parse(localStorage['levelT']);
-    purchasedMusicUpgrade = JSON.parse(localStorage['purchasedMusicUpgrade']);
-    upgradePurchased = JSON.parse(localStorage['upgradePurchased']);
-    gotGreek = JSON.parse(localStorage['gotGreek']);
-    gotGreekTotal = JSON.parse(localStorage['gotGreekTotal']);
+    gameData = JSON.parse(decodeString(localStorage['gameData']));
+    costT = JSON.parse(decodeString(localStorage['costT']));
+    kpsvector = JSON.parse(decodeString(localStorage['kpsvector']));
+    numberCorrect = JSON.parse(decodeString(localStorage['numberCorrect']));
+    numberCorrectCommas = JSON.parse(decodeString(localStorage['numberCorrectCommas']));
+    numberCorrectUnit = JSON.parse(decodeString(localStorage['numberCorrectUnit']));
+    kpsFromT = JSON.parse(decodeString(localStorage['kpsFromT']));
+    levelT = JSON.parse(decodeString(localStorage['levelT']));
+    purchasedMusicUpgrade = JSON.parse(decodeString(localStorage['purchasedMusicUpgrade']));
+    upgradePurchased = JSON.parse(decodeString(localStorage['upgradePurchased']));
+    gotGreek = JSON.parse(decodeString(localStorage['gotGreek']));
+    gotGreekTotal = JSON.parse(decodeString(localStorage['gotGreekTotal']));
   }
   if (gameData.kps[0] == 0) {
     document.getElementById("rubyHeader").style.visibility = "hidden"
@@ -3196,7 +3441,7 @@ function initialize() {
   musicCheck()
 }
 
-for (let i = 1; i < 6; i++) {
+for (let i = 1; i < 6; i++) { //Add Music Buttons
   addMusicButton[i].classList.add("buyButton")
   addMusicButton[i].classList.add(iconmusic[i])
   addMusicButton[i].innerHTML =
@@ -3509,7 +3754,7 @@ for (let i = 1; i < 78; i++) {
     upgradeButton[i][j].innerHTML = "<b>Lvl Up T-" + i + "<br><br><br>Cost: "
       + upgradeCost[i][j][0] + " " + abbr[upgradeCost[i][j][1]] + "</b>"
     upgradeButton[i][j].style =
-      "background-color: white; margin: 0.26vw; font-size: 0.6vw; line-height:1vw"
+      "background-color: white; font-size: 0.6vw; line-height:1vw"
     upgradeButton[i][j].classList.add("buyButton")
     upgradeButton[i][j].addEventListener('click', function() {
       levelUpT(i);
