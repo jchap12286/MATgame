@@ -296,7 +296,7 @@ player.addEventListener('ended',function(){playNext()})
 document.addEventListener('keypress', function (event) {
   if (event.key === " ") {
     event.preventDefault()
-    if (player.style.display != "none") {
+    if (purchasedMusicUpgrade[1] == true) {
       if (!player.paused) {
         player.pause()
       }
