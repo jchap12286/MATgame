@@ -1362,6 +1362,7 @@ function reviewQuestion() {
     document.getElementById("mathProblem").innerHTML = "Determine the missing exponent:<br>" + "`1/x^-" + n + "=x^?`"
     answer = n
   }
+  document.getElementById("mathProblemType").style.fontSize = "1.1vw"
   document.getElementById("mathProblemType").innerHTML = "<b>Basic Algebra Review Problem</b>"
   MathJax.Hub.Queue(["Typeset", MathJax.Hub, mathProblem]);
   document.getElementById("answerdiv").style.display = "inline-block"
@@ -2751,7 +2752,7 @@ function buyQuestion(i) {
         answer = Math.round((Math.log(2)/r+Number.EPSILON)*100)/100
       }
     }
-
+    document.getElementById("mathProblemType").style.fontSize = "1.1vw"
     document.getElementById("mathProblemType").innerHTML = "<b>Type-" + i + " Problem</b>"
     MathJax.Hub.Queue(["Typeset", MathJax.Hub, mathProblem]);
     costT[i] = multiply(gameData.growthFactor,costT[i]) //Could you get noninteger costs here?
