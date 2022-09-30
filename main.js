@@ -1826,7 +1826,7 @@ function buyQuestion(i) {
       // (x^2 + a^2)(x - b) = x^3 - bx^2 + a^2 x - a^2 b
       var a = 1 + Math.ceil(Math.random() * 5)
       var asq = a ** 2
-      var b = Math.ceil(Math.random() * 11) - 6
+      var b = (2 * Math.ceil(Math.random() * 2) - 3) * Math.ceil(Math.random() * 5) // Between -5 and 5 but not 0
       var c = asq * b
       var text = "Find all rational and other zeros of the function:<br> `"
         + "f(x)=x^3-" + b + "x^2+" + asq + "x-" + c + "`.<br>"
@@ -1878,7 +1878,7 @@ function buyQuestion(i) {
     }
     else if (i == 36) { //Solve using quadratic formula - complex solutions - integer real/im parts
       var a = (2 * Math.ceil(Math.random() * 2) - 3) * Math.ceil(Math.random() * 5) //This can be -5 to 5, not 0
-      var b = Math.ceil(Math.random() * 7)
+      var b = 1 + Math.ceil(Math.random() * 6)
       var a2 = 2 * a
       var a2b2 = a ** 2 + b ** 2
       var text = "Use the quadratic formula to solve the equation<br> `"
